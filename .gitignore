@@ -4,9 +4,16 @@
 # dependencies
 /node_modules
 
+/.yarn/ 
+
 # logs
 npm-debug.log
 yarn-error.log
 
 # TypeScript incremental compilation cache
 *.tsbuildinfo
+
+shas.txt
+
+/dist/
+

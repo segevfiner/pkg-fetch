@@ -1,4 +1,4 @@
-FROM oraclelinux:7
+FROM oraclelinux:7 AS build
 
 USER root:root
 WORKDIR /root/pkg-fetch/
@@ -22,9 +22,12 @@ COPY . ./
 
 ARG PKG_FETCH_OPTION_n
 
-RUN yarn install
+RUN yarn install --ignore-engines
 
 RUN scl enable devtoolset-10 rh-python36 \
     " \
     yarn start --node-range $PKG_FETCH_OPTION_n --ninja --output dist \
     "
+
+FROM scratch
+COPY --from=build /root/pkg-fetch/dist /
