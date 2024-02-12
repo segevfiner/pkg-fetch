@@ -13,6 +13,7 @@ WORKDIR /root/pkg-fetch/
 
 RUN apk add --no-cache build-base git linux-headers npm python3 yarn
 RUN curl -fsSL https://bootstrap.pypa.io/get-pip.py | python3
+RUN pip install ninja
 
 # https://gitlab.alpinelinux.org/alpine/aports/-/issues/8626
 ENV CFLAGS=-U_FORTIFY_SOURCE
